@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import Post from './Post/Post';
-import {ActionsTypes, PostType} from "../../../Redux/state";
+import {ActionsTypes, addPostActionCreator, PostType, updateNewPostTextActionCreator} from "../../../Redux/state";
 import s from "../../Dialogs/Dialogs.module.css";
 
 type PropsType = {
@@ -9,10 +9,11 @@ type PropsType = {
     dispatch: (action: ActionsTypes) => void
 }
 
+
 const MyPosts = (props: PropsType) => {
 
     let postsElements =
-        props.posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>);
+        props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
 
     let newPostElement = React.createRef<HTMLTextAreaElement>();
     const changeValueTextMessage = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -22,30 +23,31 @@ const MyPosts = (props: PropsType) => {
     }
 
     let addPost = () => {
-        props.dispatch({type: 'ADD-POST', postText: props.newPostText});
-}
+        props.dispatch(addPostActionCreator(props.newPostText));
+    }
 
-let onPostChange = () => {
-       if(newPostElement.current) {
-         let text = newPostElement.current.value
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text});
+    let onPostChange = () => {
+        if (newPostElement.current) {
+            let text = newPostElement.current.value
+            let action = updateNewPostTextActionCreator(text);
+            props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text});
         }
- }
+    }
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea onChange={ changeValueTextMessage } ref={newPostElement}
-                              value={props.newPostText} />
+                    <textarea onChange={changeValueTextMessage} ref={newPostElement}
+                              value={props.newPostText}/>
                 </div>
                 <div>
-                    <button onClick={ addPost }>Add post</button>
+                    <button onClick={addPost}>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>
-                { postsElements }
+                {postsElements}
             </div>
         </div>
     )
