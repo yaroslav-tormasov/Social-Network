@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import DialogItem from "./Dialogitem/Dialogitem";
 import Message from "./Message/Message";
-import {DialogPageType, sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../Redux/state";
+import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../Redux/dialogs-reducer";
 import s from "./Dialogs.module.css"
+import {DialogPageType, StoreType} from "../../Redux/store";
 
 
 type PropsType = {
-    state: DialogPageType
+    dialogsPage: DialogPageType
+    store: StoreType
 }
 
 
@@ -22,7 +24,7 @@ const Dialogs = (props: PropsType) => {
         props.store.dispatch(sendMessageActionCreator())
     }
 
-    let onNewMessageChange = (e) => {
+    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
        let body = e.target.value;
        props.store.dispatch(updateNewMessageBodyActionCreator(body))
     }
@@ -37,7 +39,7 @@ const Dialogs = (props: PropsType) => {
                 <div>
                     <div><textarea value={newMessageBody}
                                    onChange = { onNewMessageChange }
-                                   placeholder='Enter your message'></textarea></div>
+                                   placeholder='Enter your message'> </textarea></div>
                     <div><button onClick={ onSendMessageClick }>Send</button></div>
                 </div>
             </div>
