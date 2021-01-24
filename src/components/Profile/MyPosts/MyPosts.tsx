@@ -5,12 +5,13 @@ import {
     updateNewPostTextActionCreator
 } from "../../../Redux/profile-reducer";
 import s from "../../Dialogs/Dialogs.module.css";
-import {ActionsTypes, PostType} from "../../../Redux/store";
+import {ActionsTypes, PostType, ProfilePageType} from "../../../Redux/store";
 
 type PropsType = {
     posts: Array<PostType>
     newPostText: string
     dispatch: (action: ActionsTypes) => void
+    addPost: () => void
 }
 
 
@@ -20,21 +21,15 @@ const MyPosts = (props: PropsType) => {
         props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
 
     let newPostElement = React.createRef<HTMLTextAreaElement>();
-    const changeValueTextMessage = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        debugger
-        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: e.currentTarget.value}
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: e.currentTarget.value})
-    }
 
     let addPost = () => {
-        props.dispatch(addPostActionCreator(props.newPostText));
+        props.addPost()
     }
 
     let onPostChange = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value
-            let action = updateNewPostTextActionCreator(text);
-            props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text});
+            props.updateNewPostText(text)
         }
     }
 
@@ -43,11 +38,11 @@ const MyPosts = (props: PropsType) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea onChange={changeValueTextMessage} ref={newPostElement}
+                    <textarea onChange={ onPostChange } ref={newPostElement}
                               value={props.newPostText}/>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={ addPost }>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>
