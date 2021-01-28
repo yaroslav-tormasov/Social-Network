@@ -9,6 +9,10 @@ let reducers = combineReducers({
     sidebarReducer: sidebarReducer
 })
 
+export type RootStateReduxType = ReturnType<typeof reducers>
+
 let store = createStore(reducers);
+
+export type StoreReduxType = typeof store
 
 export default store;
