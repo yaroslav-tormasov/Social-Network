@@ -5,13 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import store, {RootStateReduxType} from "./Redux/redux-store";
-import {RootStateType} from "./Redux/store";
-
+import {Provider} from "react-redux";
 
 let rerenderEntireTree = (state: RootStateReduxType) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App  store={store} />
+            <Provider store={store}>
+            <App />
+            </Provider>
         </BrowserRouter>, document.getElementById('root'));
 }
 

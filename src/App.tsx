@@ -4,16 +4,10 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import {Route} from "react-router-dom";
-import {ActionsTypes} from "./Redux/store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {RootStateReduxType, StoreReduxType} from './Redux/redux-store';
-
-type PropsType = {
-    store: StoreReduxType
-}
 
 
-const App = (props: PropsType) => {
+const App = () => {
 
     return (
         <div className='app-wrapper'>
@@ -22,11 +16,11 @@ const App = (props: PropsType) => {
 
             <div className='app-wrapper-content'>
                 <Route path='/dialogs'
-                       render={() => <DialogsContainer store={props.store}/>}
+                       render={() => <DialogsContainer />}
                 />
 
                 <Route path='/profile'
-                       render={() => <Profile store={props.store}/>}
+                       render={() => <Profile />}
                 />
             </div>
         </div>

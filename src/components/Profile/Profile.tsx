@@ -1,6 +1,5 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ActionsTypes, ProfilePageType, StoreType} from "../../Redux/store";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {StoreReduxType} from "../../Redux/redux-store";
 
@@ -14,7 +13,7 @@ let state = props.store.getState()
     return (
         <div>
             <ProfileInfo/>
-            <MyPostsContainer store={props.store} />
+            <MyPostsContainer />
         </div>
     )
 }
