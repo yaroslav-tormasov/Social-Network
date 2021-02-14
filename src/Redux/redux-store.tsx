@@ -13,6 +13,6 @@ export type RootStateReduxType = ReturnType<typeof reducers>
 
 let store = createStore(reducers);
 
-export type StoreReduxType = typeof store
+export type StoreReduxType = ReturnType<typeof reducers >
 
 export default store;

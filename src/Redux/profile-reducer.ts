@@ -8,7 +8,7 @@ type InitialStateType = {
     posts: Array<PostType>
 }
 let initialState: InitialStateType = {
-    newPostText: 'it',
+    newPostText: '',
         posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 12},
         {id: 2, message: 'It\'s my first post', likesCount: 11},
@@ -39,7 +39,7 @@ const profileReducer = (state = initialState, action: ActionsTypes): ProfilePage
     }
 }
 
-export const addPostActionCreator = (postText: string) => ({type: ADD_POST, postText: postText} as const)
+export const addPostActionCreator = () => ({type: ADD_POST} as const)
 export const updateNewPostTextActionCreator = (newText: string) => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: newText
