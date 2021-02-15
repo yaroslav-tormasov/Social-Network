@@ -1,6 +1,7 @@
 import profileReducer, { ProfileActionType } from "./profile-reducer";
 import dialogsReducer, {DialogsActionType} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
+import {UsersActionType} from "./users-reducer";
 
 let store: StoreType = {
     _state: {
@@ -66,7 +67,7 @@ type AddPostActionType = {
     postText: string
 }
 
-export type ActionsTypes = DialogsActionType | ProfileActionType
+export type ActionsTypes = DialogsActionType | ProfileActionType | UsersActionType
 
 type ChangeNewTextActionType = {
     type: "UPDATE-NEW-POST-TEXT"
@@ -89,7 +90,14 @@ export type PostType = {
     likesCount: number
 
 }
-
+export type UsersType = {
+    id: number
+    photoUrl: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: {city: string, country: string}
+}
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
