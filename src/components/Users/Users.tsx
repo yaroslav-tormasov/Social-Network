@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from '../Users/Users.module.css';
-import {UsersType} from "../../Redux/store";
+import {UsersPropsType} from './UsersContainer';
 
-type users = {
-    users: Array<UsersType>
-}
 
-let Users = (props: users) => {
+let Users = (props: UsersPropsType) => {
     if (props.users.length === 0) {
         props.setUsers([
             {

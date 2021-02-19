@@ -6,13 +6,25 @@ import {ActionsTypes, UsersType} from "../../Redux/store";
 import {RootStateReduxType} from "../../Redux/redux-store";
 
 
-let mapStateToProps = (state: RootStateReduxType) => {
+type MapStatePropsType = {
+    users: Array<UsersType>
+}
+
+type MapDispatchPropsType = {
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    setUsers: (users: Array<UsersType>) => void
+}
+
+export type UsersPropsType = MapStatePropsType & MapDispatchPropsType
+
+let mapStateToProps = (state: RootStateReduxType): MapStatePropsType => {
     return {
         users: state.usersPage.users
     }
 }
 
-let mapDispatchToProps = (dispatch: (action: ActionsTypes) => void) => {
+let mapDispatchToProps = (dispatch: (action: ActionsTypes) => void): MapDispatchPropsType => {
     return {
         follow: (userId: number) => {
             dispatch(followAC(userId))
@@ -20,7 +32,7 @@ let mapDispatchToProps = (dispatch: (action: ActionsTypes) => void) => {
         unfollow: (userId: number) => {
             dispatch(unfollowAC(userId))
         },
-        setUsers: (users: UsersType) => {
+        setUsers: (users: Array<UsersType>) => {
             dispatch(setUsersAC(users))
         }
     }
