@@ -7,30 +7,30 @@ type InitialStateType = {
 }
 let initialState: InitialStateType = {
     users: [
-        {
-            id: 1,
-            photoUrl: 'https://lh3.googleusercontent.com/proxy/Mx25i0iYqI5Agy9v9obrB8uvTF-hTDhWKAo8GnMx2awwWQ6mM0uTVZ9y8qKDhcosooFYmS-Bio49bfxt3WsTnKYkvOwbc-GXJg_GB3gedM_ZqkS_Vf8mt3aVNHtPi3nw8AhVwtA93ReiUn-3oaU5Scm9VcU3aS72EghnRunnMcwU_sbVo7pO0pYD2o4qrRNGg4ladJCy8f6xl3rdg41kKQ',
-            followed: false,
-            fullName: 'Yaroslav',
-            status: 'I am junior',
-            location: {city: 'Samara', country: 'Russia'}
-        },
-        {
-            id: 2,
-            photoUrl: 'https://lh3.googleusercontent.com/proxy/Mx25i0iYqI5Agy9v9obrB8uvTF-hTDhWKAo8GnMx2awwWQ6mM0uTVZ9y8qKDhcosooFYmS-Bio49bfxt3WsTnKYkvOwbc-GXJg_GB3gedM_ZqkS_Vf8mt3aVNHtPi3nw8AhVwtA93ReiUn-3oaU5Scm9VcU3aS72EghnRunnMcwU_sbVo7pO0pYD2o4qrRNGg4ladJCy8f6xl3rdg41kKQ',
-            followed: true,
-            fullName: 'Anton',
-            status: 'I am python developer',
-            location: {city: 'Samara', country: 'Russia'}
-        },
-        {
-            id: 3,
-            photoUrl: 'https://lh3.googleusercontent.com/proxy/Mx25i0iYqI5Agy9v9obrB8uvTF-hTDhWKAo8GnMx2awwWQ6mM0uTVZ9y8qKDhcosooFYmS-Bio49bfxt3WsTnKYkvOwbc-GXJg_GB3gedM_ZqkS_Vf8mt3aVNHtPi3nw8AhVwtA93ReiUn-3oaU5Scm9VcU3aS72EghnRunnMcwU_sbVo7pO0pYD2o4qrRNGg4ladJCy8f6xl3rdg41kKQ',
-            followed: false,
-            fullName: 'Valentin',
-            status: 'I am full stack developer',
-            location: {city: 'Samara', country: 'Russia'}
-        },
+        // {
+        //     id: 1,
+        //     photos: 'https://lh3.googleusercontent.com/proxy/Mx25i0iYqI5Agy9v9obrB8uvTF-hTDhWKAo8GnMx2awwWQ6mM0uTVZ9y8qKDhcosooFYmS-Bio49bfxt3WsTnKYkvOwbc-GXJg_GB3gedM_ZqkS_Vf8mt3aVNHtPi3nw8AhVwtA93ReiUn-3oaU5Scm9VcU3aS72EghnRunnMcwU_sbVo7pO0pYD2o4qrRNGg4ladJCy8f6xl3rdg41kKQ',
+        //     followed: false,
+        //     name: 'Yaroslav',
+        //     status: 'I am junior',
+        //     location: {city: 'Samara', country: 'Russia'}
+        // },
+        // {
+        //     id: 2,
+        //     photos: 'https://lh3.googleusercontent.com/proxy/Mx25i0iYqI5Agy9v9obrB8uvTF-hTDhWKAo8GnMx2awwWQ6mM0uTVZ9y8qKDhcosooFYmS-Bio49bfxt3WsTnKYkvOwbc-GXJg_GB3gedM_ZqkS_Vf8mt3aVNHtPi3nw8AhVwtA93ReiUn-3oaU5Scm9VcU3aS72EghnRunnMcwU_sbVo7pO0pYD2o4qrRNGg4ladJCy8f6xl3rdg41kKQ',
+        //     followed: true,
+        //     name: 'Anton',
+        //     status: 'I am python developer',
+        //     location: {city: 'Samara', country: 'Russia'}
+        // },
+        // {
+        //     id: 3,
+        //     photos: 'https://lh3.googleusercontent.com/proxy/Mx25i0iYqI5Agy9v9obrB8uvTF-hTDhWKAo8GnMx2awwWQ6mM0uTVZ9y8qKDhcosooFYmS-Bio49bfxt3WsTnKYkvOwbc-GXJg_GB3gedM_ZqkS_Vf8mt3aVNHtPi3nw8AhVwtA93ReiUn-3oaU5Scm9VcU3aS72EghnRunnMcwU_sbVo7pO0pYD2o4qrRNGg4ladJCy8f6xl3rdg41kKQ',
+        //     followed: false,
+        //     name: 'Valentin',
+        //     status: 'I am full stack developer',
+        //     location: {city: 'Samara', country: 'Russia'}
+        // },
     ],
 };
 
