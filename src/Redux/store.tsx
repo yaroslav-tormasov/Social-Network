@@ -92,9 +92,12 @@ export type PostType = {
 }
 export type UsersType = {
     id: number
-    photoUrl: string
+    photos: {
+        small: string | null
+        large: string | null
+    }
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: {city: string, country: string}
 }
