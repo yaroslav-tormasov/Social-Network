@@ -29,7 +29,7 @@ let store: StoreType = {
                 {id: 4, message: 'Yo'},
                 {id: 5, message: 'Yo'}
             ],
-            newMessageBody: ""
+            newMessageBody: "",
         },
         sidebar: {}
     },
@@ -104,6 +104,7 @@ export type UsersType = {
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
+    profile: null
 }
 
 export type DialogPageType = {
