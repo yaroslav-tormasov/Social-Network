@@ -7,12 +7,11 @@ import {
     setTotalUsersCount,
     setUsers,
     toggleIsFetching,
-    unfollow
+    unfollow, UsersType
 } from "../../Redux/users-reducer";
-import {ActionsTypes, UsersType} from "../../Redux/store";
 import {RootStateReduxType} from '../../Redux/redux-store';
 import axios from "axios";
-import preloader from '../../assets/images/Spin-Preloader-1.gif';
+import preloader from '../../assets/images/preloader.gif';
 
 type MapStatePropsType = {
     users: Array<UsersType>
@@ -38,7 +37,7 @@ class UsersContainerComponent extends React.Component<UsersPropsType> {
         this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
-                this.props.toggleIsFetching(true)
+                this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
                 this.props.setTotalUsersCount(response.data.totalCount)
             });
@@ -50,6 +49,7 @@ class UsersContainerComponent extends React.Component<UsersPropsType> {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setUsers(response.data.items)
+                this.props.toggleIsFetching(false)
             });
     }
 
@@ -58,7 +58,7 @@ class UsersContainerComponent extends React.Component<UsersPropsType> {
             {this.props.isFetching ? <img src={preloader} /> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
-                   currentPage={this.props.pageSize}
+                   currentPage={this.props.currentPage}
                    onPageChanged={this.onPageChanged}
                    users={this.props.users}
                    follow={this.props.follow}

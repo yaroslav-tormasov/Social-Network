@@ -1,17 +1,9 @@
 import React from 'react';
 import Post from './Post/Post';
 import s from "../../Dialogs/Dialogs.module.css";
-import {PostType} from "../../../Redux/store";
+import {PostPropsType} from "./MyPostsContainer";
 
-type PropsType = {
-    posts: Array<PostType>
-    newPostText: string
-    addPost: () => void
-    updateNewPostText: (text: string) => void
-}
-
-
-const MyPosts = (props: PropsType) => {
+const MyPosts = (props: PostPropsType) => {
 
     let postsElements =
         props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);

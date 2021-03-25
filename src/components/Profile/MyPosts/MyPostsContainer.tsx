@@ -1,19 +1,35 @@
 import React from 'react';
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/profile-reducer";
+import {
+    addPostActionCreator,
+    PostType,
+    ProfileType,
+    updateNewPostTextActionCreator
+} from "../../../Redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import {RootStateReduxType} from "../../../Redux/redux-store";
-import {ActionsTypes} from "../../../Redux/store";
 import {connect} from "react-redux";
+import {Dispatch} from "redux";
 
+type MapStatePropsType = {
+    posts: Array<PostType>
+    newPostText: string
+}
 
-const mapStateToProps = (state: RootStateReduxType) => {
+type MapDispatchPropsType = {
+    updateNewPostText: (text: string) => void
+    addPost: () => void
+}
+
+export type PostPropsType = MapStatePropsType & MapDispatchPropsType
+
+const mapStateToProps = (state: RootStateReduxType): MapStatePropsType => {
     return {
         posts: state.profileReducer.posts,
         newPostText: state.profileReducer.newPostText
     }
 }
 
-const mapDispatchToProps = (dispatch: (action: ActionsTypes) => void) => {
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
         updateNewPostText: (text: string) => {
             dispatch(updateNewPostTextActionCreator(text));
@@ -24,7 +40,7 @@ const mapDispatchToProps = (dispatch: (action: ActionsTypes) => void) => {
     }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const MyPostsContainer = connect<MapStatePropsType, MapDispatchPropsType, {}, RootStateReduxType>(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 
 export default MyPostsContainer;

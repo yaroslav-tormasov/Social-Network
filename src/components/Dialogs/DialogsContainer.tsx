@@ -1,22 +1,34 @@
 import React from 'react';
-import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../Redux/dialogs-reducer";
+import {
+    DialogsActionType,
+    InitialStateType,
+    sendMessageActionCreator,
+    updateNewMessageBodyActionCreator
+} from "../../Redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
-import {RootStateReduxType, StoreReduxType} from "../../Redux/redux-store";
+import {RootStateReduxType} from "../../Redux/redux-store";
 import {connect} from "react-redux";
-import {ActionsTypes} from "../../Redux/store";
+import {Dispatch} from "redux";
 
 
-type PropsType = {
-    store: StoreReduxType
+type MapStatePropsType = {
+    dialogsPage: InitialStateType
 }
 
-let mapStateToProps = (state: RootStateReduxType) => {
+type MapDispatchToPropsType = {
+    updateNewMessageBody: (body: string) => void
+    sendMessage: () => void
+}
+
+export type DialogsPropsType = MapStatePropsType & MapDispatchToPropsType
+
+let mapStateToProps = (state: RootStateReduxType):MapStatePropsType => {
     return {
         dialogsPage: state.dialogsReducer
     }
 }
 
-let mapDispatchToProps = (dispatch: (action: ActionsTypes) => void) => {
+let mapDispatchToProps = (dispatch: Dispatch<DialogsActionType>): MapDispatchToPropsType => {
     return {
         updateNewMessageBody: (body: string) => {
             dispatch(updateNewMessageBodyActionCreator(body))
@@ -26,6 +38,6 @@ let mapDispatchToProps = (dispatch: (action: ActionsTypes) => void) => {
         }
     }
 }
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+const DialogsContainer = connect<MapStatePropsType,MapDispatchToPropsType, {}, RootStateReduxType >(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

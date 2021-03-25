@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
-import {UsersType} from "../../Redux/store";
 import {NavLink} from "react-router-dom";
+import {UsersType} from "../../Redux/users-reducer";
 
 type PropsType = {
     totalUsersCount: number,
@@ -40,12 +40,12 @@ let Users = (props: PropsType) => {
                     </NavLink>
                 </div>
             <div>
-                {u.followed ? <button onClick={() => {
+                {!u.followed ? <button onClick={() => {
                         props.follow(u.id)
-                    }}>Unfollow</button>
+                    }}>Follow</button>
                     : <button onClick={() => {
                         props.unfollow(u.id)
-                    }}>Follow</button>}
+                    }}>UnFollow</button>}
             </div>
             </span>
                 <span>
